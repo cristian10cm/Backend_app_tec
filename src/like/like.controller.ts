@@ -16,7 +16,7 @@ import { UpdateLikeDto } from './dto/update-like.dto';
 
 @Controller('like')
 export class LikeController {
-  private constructor(
+  constructor(
     private readonly createLikeUseCase: CreateLike,
     private readonly UpdateLikeUseCase: UpdateLike,
     private readonly getAllLikeUseCase: GetAllLikes,
@@ -33,5 +33,9 @@ export class LikeController {
   @Patch(':id')
   async updateLike(@Param('id') id: string, data: UpdateLikeDto) {
     return await this.UpdateLikeUseCase.execute(id, data);
+  }
+  @Get(':id')
+  async getLike(@Param('id') id: string) {
+    return await this.getLikeUseCase.execute(id);
   }
 }

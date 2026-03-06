@@ -8,7 +8,6 @@ import { AuthModule } from './auth/auth.module';
 import { PublicationModule } from './publication/publication.module';
 import { CommentModule } from './comment/comment.module';
 import { LikeModule } from './like/like.module';
-import { LikeModule } from './like/like.module';
 
 @Module({
   imports: [

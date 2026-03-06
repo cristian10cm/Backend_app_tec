@@ -1,7 +1,40 @@
 import { Module } from '@nestjs/common';
 import { LikeController } from './like.controller';
+import { PrismaService } from 'src/prisma/prisma.service';
+import { PrismaLikeRepository } from './infraestructure/prisma-like-repository';
+import { CreateLike } from './use-case/like-create.use-case';
+import { UpdateLike } from './use-case/like-update.use-case';
+import { GetAllLikes } from './use-case/like-get-all.use-case';
+import { GetLike } from './use-case/like-get.use-case';
 
 @Module({
-  controllers: [LikeController]
+  controllers: [LikeController],
+  providers: [
+    PrismaService,
+    {
+      provide: 'LikeRepository',
+      useClass: PrismaLikeRepository,
+    },
+    {
+      provide: CreateLike,
+      useFactory: (repo) => new CreateLike(repo),
+      inject: ['LikeRepository'],
+    },
+    {
+      provide: UpdateLike,
+      useFactory: (repo) => new UpdateLike(repo),
+      inject: ['LikeRepository'],
+    },
+    {
+      provide: GetAllLikes,
+      useFactory: (repo) => new GetAllLikes(repo),
+      inject: ['LikeRepository'],
+    },
+    {
+      provide: GetLike,
+      useFactory: (repo) => new GetLike(repo),
+      inject: ['LikeRepository'],
+    },
+  ],
 })
 export class LikeModule {}

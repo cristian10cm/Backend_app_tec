@@ -5,7 +5,7 @@ import { Like } from '../domain/entity/like-entity';
 
 @Injectable()
 export class PrismaLikeRepository implements LikeRepository {
-  private constructor(private readonly prisma: PrismaService) {}
+  constructor(private readonly prisma: PrismaService) {}
   async getAllLike(publicationId: string): Promise<Like[]> {
     const likes = await this.prisma.like.findMany({
       where: { publicationId },
