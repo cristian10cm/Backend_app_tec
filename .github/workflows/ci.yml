@@ -1,0 +1,21 @@
+name: MyFirts Pipeline 
+on:
+    push:
+      branches:
+        - main
+jobs:
+  job1:
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout version
+        uses: actions/checkout@v4
+      - name: set up node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: install pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 10
+      - name: compiled proyect
+        run: pnpm build
