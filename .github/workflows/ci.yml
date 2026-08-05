@@ -19,5 +19,7 @@ jobs:
           version: 10
       - name : pnpm install
         run: pnpm install
+      - name: Generate Prisma Client
+        run: pnpm prisma generate
       - name: compiled proyect
         run: pnpm build
