@@ -30,7 +30,7 @@ jobs:
           password: ${{ secrets.DOCKER_TOKEN }}
       - name: Creates docker images
         run: docker build -t ${{ secrets.DOCKER_USERNAME }}/taller-app:latest .
-      - name: Show Docker images
+      - name: Show Docker image
         run: docker images
       - name: Push image to docker Hub
         run: docker push ${{ secrets.DOCKER_USERNAME }}/taller-app:latest
