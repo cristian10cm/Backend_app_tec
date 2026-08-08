@@ -29,9 +29,9 @@ jobs:
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_TOKEN }}
       - name: Creates docker images
-        run: docker build -t ${{ secrets.DOCKER_USERNAME }}/taller-app:latest .
+        run: docker build -t ${{ secrets.DOCKER_USERNAME }}/taller-app .
       - name: Show Docker image
         run: docker images
       - name: Push image to docker Hub
-        run: docker push ${{ secrets.DOCKER_USERNAME }}/taller-app:latest
+        run: docker push ${{ secrets.DOCKER_USERNAME }}/taller-app
       
